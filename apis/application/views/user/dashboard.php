@@ -16,7 +16,7 @@ $(document).ready(function() {
 <div>
 
 
-<center>Welcome <?php echo adminName();?> </center>
+<center>Welcome  Mr.<?php echo adminName();?> </center>
 
 <a href="<?php echo base_url();?>User/logout"> Logout </a>
 	
