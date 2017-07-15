@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'. $_SERVER['SERVER_NAME'].'/Demo_ci/apis/';
+$config['base_url'] = 'http://'. $_SERVER['SERVER_NAME'].'/git_pro/apis/';
 
 /*
 |--------------------------------------------------------------------------
