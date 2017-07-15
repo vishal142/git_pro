@@ -1,0 +1,3842 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Operation BBQ Relief API Documentation",
+        "description": "Operation BBQ Relief",
+        "version": "1.0.0"
+    },
+    "host": "localhost/obr_version2/",
+    "basePath": "apis",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api_1_0_0/user/volunteerInformation": {
+            "post": {
+                "tags": [
+                    "Volunteer: Everything about volunteer"
+                ],
+                "summary": "Volunteer Information",
+                "description": "Volunteer information collect",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "full_name",
+                        "in": "formData",
+                        "description": "Full Name Unique",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email_id",
+                        "in": "formData",
+                        "description": "Email Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "Phone No",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "allow_text",
+                        "in": "formData",
+                        "description": "Allow Text",
+                        "type": "string"
+                    },
+                    {
+                        "name": "add_text_group",
+                        "in": "formData",
+                        "description": "Add Text Group",
+                        "type": "string"
+                    },
+                    {
+                        "name": "current_medication",
+                        "in": "formData",
+                        "description": "Current Medication",
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergy",
+                        "in": "formData",
+                        "description": "Allergies",
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergy\u200e_data",
+                        "in": "formData",
+                        "description": "Allergies Data",
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency_name",
+                        "in": "formData",
+                        "description": "Emergency Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency_phone",
+                        "in": "formData",
+                        "description": "Emergency Phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proffesion",
+                        "in": "formData",
+                        "description": "Proffesion",
+                        "type": "string"
+                    },
+                    {
+                        "name": "company",
+                        "in": "formData",
+                        "description": "Company Name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "employer_phone",
+                        "in": "formData",
+                        "description": "Employer Phone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "disclaimer",
+                        "in": "formData",
+                        "description": "disclaimer",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profile_image",
+                        "in": "formData",
+                        "description": "Profile Image",
+                        "type": "file"
+                    },
+                    {
+                        "name": "signature",
+                        "in": "formData",
+                        "description": "Signature",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/user/donationReciept": {
+            "post": {
+                "tags": [
+                    "Donation: Everything about donation"
+                ],
+                "summary": "Donation Reciept",
+                "description": "Donation reciept information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/donationreciept"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/user/token": {
+            "post": {
+                "tags": [
+                    "Get Token"
+                ],
+                "summary": "Generate Token",
+                "description": "Generate New Token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "grant_type",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "client_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "client_secret",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/cmspage/getLatestUpdate": {
+            "post": {
+                "tags": [
+                    "CMS: Everything about CMS"
+                ],
+                "summary": "Cms pages for app",
+                "description": "Latest Update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/cmspage/howToInvolveCms": {
+            "post": {
+                "tags": [
+                    "CMS: Everything about CMS"
+                ],
+                "summary": "Cms pages for app",
+                "description": "Latest Update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/cmspage/aboutCms": {
+            "post": {
+                "tags": [
+                    "CMS: Everything about CMS"
+                ],
+                "summary": "Cms pages for app",
+                "description": "Latest Update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/cmspage/contactCms": {
+            "post": {
+                "tags": [
+                    "CMS: Everything about CMS"
+                ],
+                "summary": "Cms pages for app",
+                "description": "Latest Update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/stripepay/createPlan": {
+            "post": {
+                "tags": [
+                    "Stripe api :Create Plans"
+                ],
+                "summary": "Get all fixed plans",
+                "description": "Online donation plans",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "formData",
+                        "description": "amount",
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_recurring",
+                        "in": "formData",
+                        "description": "M->Monthly,Q->Quarterly,A->Annually Or Y for year",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/donations/donation/onlineDonation": {
+            "post": {
+                "tags": [
+                    "Online Donation:Make online donation"
+                ],
+                "summary": "Online Donation form",
+                "description": "Online donation",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_type",
+                        "in": "formData",
+                        "description": "(S->Standard,H->Honoring,M->Memoriam)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "designation",
+                        "in": "formData",
+                        "description": "(DG->Day of Giving,CF->Corpus Fund,DR->Disaster Relief)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_recurring",
+                        "in": "formData",
+                        "description": "(O->One time,M->Monthly,Q->Quarterly,A->Annually)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_name",
+                        "in": "formData",
+                        "description": "donor name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_address",
+                        "in": "formData",
+                        "description": "donor_addres",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_city",
+                        "in": "formData",
+                        "description": "donor_city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_state",
+                        "in": "formData",
+                        "description": "donor_state",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_zip",
+                        "in": "formData",
+                        "description": "donor_zip",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_phone",
+                        "in": "formData",
+                        "description": "donor_phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_email",
+                        "in": "formData",
+                        "description": "donor_email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_value",
+                        "in": "formData",
+                        "description": "donation_value",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_name",
+                        "in": "formData",
+                        "description": "honor_name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_address",
+                        "in": "formData",
+                        "description": "honor_name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_city",
+                        "in": "formData",
+                        "description": "honor_city",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_state",
+                        "in": "formData",
+                        "description": "honor_state",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_zip",
+                        "in": "formData",
+                        "description": "honor_zip",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_phone",
+                        "in": "formData",
+                        "description": "honor_phone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_email",
+                        "in": "formData",
+                        "description": "honor_email",
+                        "type": "string"
+                    },
+                    {
+                        "name": "is_send_notification",
+                        "in": "formData",
+                        "description": "is_send_notification(0->False, 1->True)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "token(Card token)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "description(optional data provided while payment)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency",
+                        "in": "formData",
+                        "description": "currency(usd->>default)",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/donations/donation/planDonation": {
+            "post": {
+                "tags": [
+                    "Online Donation:Make online donation"
+                ],
+                "summary": "Online Donation form",
+                "description": "Online donation",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_type",
+                        "in": "formData",
+                        "description": "(S->Standard,H->Honoring,M->Memoriam)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "designation",
+                        "in": "formData",
+                        "description": "(DG->Day of Giving,CF->Corpus Fund,DR->Disaster Relief)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_recurring",
+                        "in": "formData",
+                        "description": "(only ---M->Monthly,Q->Quarterly,A->Annually)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_name",
+                        "in": "formData",
+                        "description": "donor name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_address",
+                        "in": "formData",
+                        "description": "donor_addres",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_city",
+                        "in": "formData",
+                        "description": "donor_city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_state",
+                        "in": "formData",
+                        "description": "donor_state",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_zip",
+                        "in": "formData",
+                        "description": "donor_zip",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_phone",
+                        "in": "formData",
+                        "description": "donor_phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donor_email",
+                        "in": "formData",
+                        "description": "donor_email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "donation_value",
+                        "in": "formData",
+                        "description": "donation_value",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_name",
+                        "in": "formData",
+                        "description": "honor_name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_address",
+                        "in": "formData",
+                        "description": "honor_name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_city",
+                        "in": "formData",
+                        "description": "honor_city",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_state",
+                        "in": "formData",
+                        "description": "honor_state",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_zip",
+                        "in": "formData",
+                        "description": "honor_zip",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_phone",
+                        "in": "formData",
+                        "description": "honor_phone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "honor_email",
+                        "in": "formData",
+                        "description": "honor_email",
+                        "type": "string"
+                    },
+                    {
+                        "name": "is_send_notification",
+                        "in": "formData",
+                        "description": "is_send_notification(0->False, 1->True)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "token(Card token)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "description(optional data provided while payment)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency",
+                        "in": "formData",
+                        "description": "currency(usd->>default)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "plan_id",
+                        "in": "formData",
+                        "description": "Plan id from list",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/donations/donation/getAllPlans": {
+            "post": {
+                "tags": [
+                    "Online Donation:Make online donation"
+                ],
+                "summary": "Get all fixed plans",
+                "description": "Online donation plans",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/inventoryList": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inventoryList"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/addMoreStock": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/addMoreInventory"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/consumeInventory": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/consumeInventory"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/transferInventory": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/transferInventory"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/addMoreItemList": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/addMoreItemList"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/addItemToLocation": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/addItemToLocation"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/getTransferLocation": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/getTransferLocation"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/addEquipmentHistory": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/addEquipmentHistory"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/getEquipmentHistory": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "INVENTORY LIst",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/getEquipmentHistory"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/getRentHistory": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Inventory List",
+                "description": "Equipment rent history",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/getRentHistory"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/equipmentCheckOut": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Equipment rent CheckOut",
+                "description": "Equipment checkout",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/equipmentCheckOut"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/uploadRentImg": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Upload Equipment_img",
+                "description": "upload equipment images",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fk_inv_rent_history_id",
+                        "in": "formData",
+                        "description": "inventory rent history id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_type_1",
+                        "in": "formData",
+                        "description": "image_type_1 for F",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_name_1",
+                        "in": "formData",
+                        "description": "image name for F",
+                        "type": "file"
+                    },
+                    {
+                        "name": "image_type_2",
+                        "in": "formData",
+                        "description": "image_type_1 for B",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_name_2",
+                        "in": "formData",
+                        "description": "image name for B",
+                        "type": "file"
+                    },
+                    {
+                        "name": "image_type_3",
+                        "in": "formData",
+                        "description": "image_type_1 for L",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_name_3",
+                        "in": "formData",
+                        "description": "image name for L",
+                        "type": "file"
+                    },
+                    {
+                        "name": "image_type_4",
+                        "in": "formData",
+                        "description": "image_type_1 for R",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_name_4",
+                        "in": "formData",
+                        "description": "image name for R",
+                        "type": "file"
+                    },
+                    {
+                        "name": "image_type_5",
+                        "in": "formData",
+                        "description": "image_type_1 for I",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_name_5",
+                        "in": "formData",
+                        "description": "image name for I",
+                        "type": "file"
+                    },
+                    {
+                        "name": "image_type_6",
+                        "in": "formData",
+                        "description": "image_type_6 for I",
+                        "type": "string"
+                    },
+                    {
+                        "name": "image_name_6",
+                        "in": "formData",
+                        "description": "image name for I",
+                        "type": "file"
+                    },
+                    {
+                        "name": "type_ids",
+                        "in": "formData",
+                        "description": "all type ids are in comma separator",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/inventory/inventory/createNewItems": {
+            "post": {
+                "tags": [
+                    "INVENTORY: Everything about INVENTORY"
+                ],
+                "summary": "Create new product",
+                "description": "Create new product",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "item_name",
+                        "in": "formData",
+                        "description": "item_name OR description",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location_id",
+                        "in": "formData",
+                        "description": "location id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "inventory_type",
+                        "in": "formData",
+                        "description": "p->product ,E->equipment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "item_number",
+                        "in": "formData",
+                        "description": "item number must be unique managed from api",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "serial_number",
+                        "in": "formData",
+                        "description": "serial_number(optional)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "tag_number",
+                        "in": "formData",
+                        "description": "tag_number (optional)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "notes",
+                        "in": "formData",
+                        "description": "notes",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/eventsList": {
+            "post": {
+                "tags": [
+                    "Event-V2: Everything about Event"
+                ],
+                "summary": "Donation Reciept",
+                "description": "Event Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/eventsListJson"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/eventDetails": {
+            "post": {
+                "tags": [
+                    "Event-V2: Everything about Event"
+                ],
+                "summary": "Donation Reciept",
+                "description": "Event Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/eventDetailsJson"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/applyEvent": {
+            "post": {
+                "tags": [
+                    "Event-V2: Everything about Event"
+                ],
+                "summary": "Donation Reciept",
+                "description": "Apply on Event",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/applyEventJson"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/declineEvent": {
+            "post": {
+                "tags": [
+                    "Event-V2: Everything about Event"
+                ],
+                "summary": "Donation Reciept",
+                "description": "Apply on Event",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/eclineEventJson"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/notificationList": {
+            "post": {
+                "tags": [
+                    "Event-V2: Everything about Event"
+                ],
+                "summary": "Notification",
+                "description": "Apply on Event",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/notificationListJson"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/globalNotiList": {
+            "post": {
+                "tags": [
+                    "Push: GlobalPush Notification list"
+                ],
+                "summary": "Global Notification",
+                "description": "Global notification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/globalnotificationListJson"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/globalBadgeCount": {
+            "post": {
+                "tags": [
+                    "Push: GlobalPush Notification list"
+                ],
+                "summary": "Volunteer global badge Count",
+                "description": "Volunteer global badge Count",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "device_uid",
+                        "in": "formData",
+                        "description": "device_uid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/event/UnsetGlobalBadgeCount": {
+            "post": {
+                "tags": [
+                    "Push: GlobalPush Notification list"
+                ],
+                "summary": "unset global badge Count",
+                "description": "Volunteer global badge Count",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "device_uid",
+                        "in": "formData",
+                        "description": "device_uid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/fetchProfile": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "view profile",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/editProfile": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer Registration",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "full_name",
+                        "in": "formData",
+                        "description": "Full Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "Phone No",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "current_meds",
+                        "in": "formData",
+                        "description": "Are you Currently on any medications or do you have any medical conditions,which might impact upon your volunteer rool?",
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergy",
+                        "in": "formData",
+                        "description": "Are you allergic to anything? if yes-1,no-0",
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergy_data",
+                        "in": "formData",
+                        "description": "Allergies Data",
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency_contact_name",
+                        "in": "formData",
+                        "description": "Emergency Contact Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency_contact_phone",
+                        "in": "formData",
+                        "description": "Emergency Contact Phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profession",
+                        "in": "formData",
+                        "description": "Profession",
+                        "type": "string"
+                    },
+                    {
+                        "name": "employer_name",
+                        "in": "formData",
+                        "description": "Company You work for",
+                        "type": "string"
+                    },
+                    {
+                        "name": "employer_phone",
+                        "in": "formData",
+                        "description": "Company Phone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_address1",
+                        "in": "formData",
+                        "description": "volunteer_address1",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_address2",
+                        "in": "formData",
+                        "description": "volunteer_address2",
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_city",
+                        "in": "formData",
+                        "description": "volunteer_city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_state",
+                        "in": "formData",
+                        "description": "volunteer_state",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_zip",
+                        "in": "formData",
+                        "description": "volunteer_zip",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/changePassword": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer Change Password",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "formData",
+                        "description": "new_password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "c_password",
+                        "in": "formData",
+                        "description": "Confirm Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "old_password",
+                        "in": "formData",
+                        "description": "Old Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/logout": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer logout",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/forgetPassword": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Forget Password",
+                "description": "Forget Password in this function",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Forget Password",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/password_forget"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/passwordVerificationCode": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Forget Password",
+                "description": "Forget Password in this function",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Forget Password send passcode and user id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/password_verifiy_pasas"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/resetPassword": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Forget Password",
+                "description": "Forget Password in this function",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Forget Password send passcode and user id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/password_reset"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/editProfileImg": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer Registration",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profile_img",
+                        "in": "formData",
+                        "description": "Profile Image",
+                        "type": "file"
+                    },
+                    {
+                        "name": "profile_image_extension",
+                        "in": "formData",
+                        "description": "profile_image_extension",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/badgeCount": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer badge Count",
+                "description": "Volunteer Notification count",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/setIsNewNotification": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer badge Count",
+                "description": "Volunteer Notification count set zero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/setUnreadNotification": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer badge Count",
+                "description": "Volunteer Notification count set zero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "notification_id",
+                        "in": "formData",
+                        "description": "notification_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/deleteProfileImg": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer badge Count",
+                "description": "Volunteer Notification count set zero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profile_image_extension",
+                        "in": "formData",
+                        "description": "profile_image_extension",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/fetchSettings": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Get users settings ",
+                "description": "View settings",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/profile/changeSettings": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Change notification status",
+                "description": "Change notification status",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass_key",
+                        "in": "formData",
+                        "description": "pass_key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "description": "GGN->Global General Notice, GEN->Global Event Notice, GDN->Global Deployment Notice,",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "0->False, 1->True  ",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/volunteersRegistration": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer Registration",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "full_name",
+                        "in": "formData",
+                        "description": "Full Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "login_email_id",
+                        "in": "formData",
+                        "description": "Email Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password",
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "Phone No",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "current_meds",
+                        "in": "formData",
+                        "description": "Are you Currently on any medications or do you have any medical conditions,which might impact upon your volunteer rool?",
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergy",
+                        "in": "formData",
+                        "description": "Are you allergic to anything? if yes-1,no-0",
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergy_data",
+                        "in": "formData",
+                        "description": "Allergies Data",
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency_contact_name",
+                        "in": "formData",
+                        "description": "Emergency Contact Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency_contact_phone",
+                        "in": "formData",
+                        "description": "Emergency Contact Phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profession",
+                        "in": "formData",
+                        "description": "Profession",
+                        "type": "string"
+                    },
+                    {
+                        "name": "employer_name",
+                        "in": "formData",
+                        "description": "Company You work for",
+                        "type": "string"
+                    },
+                    {
+                        "name": "employer_phone",
+                        "in": "formData",
+                        "description": "Company Phone",
+                        "type": "string"
+                    },
+                    {
+                        "name": "disclaimer",
+                        "in": "formData",
+                        "description": "I Agree to Volunteer Disclaimer.'1'",
+                        "required": true,
+                        "type": "checkbox"
+                    },
+                    {
+                        "name": "profile_img",
+                        "in": "formData",
+                        "description": "Profile Image",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "signature_img",
+                        "in": "formData",
+                        "description": "Signature",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "registration_timestamp",
+                        "in": "formData",
+                        "description": "Registration time in (2017-01-19 10:54:53) format",
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_address1",
+                        "in": "formData",
+                        "description": "volunteer_address1",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_address2",
+                        "in": "formData",
+                        "description": "volunteer_address2",
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_city",
+                        "in": "formData",
+                        "description": "volunteer_city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_state",
+                        "in": "formData",
+                        "description": "volunteer_state",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_zip",
+                        "in": "formData",
+                        "description": "volunteer_zip",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "receive_deployment_notification",
+                        "in": "formData",
+                        "description": "receive_deployment_notification",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "receive_event_notification",
+                        "in": "formData",
+                        "description": "receive_event_notification",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "receive_general_notification",
+                        "in": "formData",
+                        "description": "receive_general_notification",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "volunteer_region_number",
+                        "in": "formData",
+                        "description": "volunteer_region_number",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/checkIn": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer Check In",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "Email id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location_id",
+                        "in": "formData",
+                        "description": "location Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "attendance_date",
+                        "in": "formData",
+                        "description": "attendance date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "checkin_time",
+                        "in": "formData",
+                        "description": "Check In",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/fetchLandingPageData": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Landing Page Data",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location_id",
+                        "in": "formData",
+                        "description": "Location",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/fetchAlreadyEnlisted": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Already checkedIn list",
+                "description": "List of volunteers already checked in",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search_string",
+                        "in": "formData",
+                        "description": "Search string",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/location_list": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about Inventory"
+                ],
+                "summary": "List of all Location",
+                "description": "location list",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/checkoutList": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Checkout List",
+                "description": "Volunteer Checkout List",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search_key",
+                        "in": "formData",
+                        "description": "search_key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "page",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "formData",
+                        "description": "page_size",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/doCheckout": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Checkout",
+                "description": "Volunteer Checkout",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "full_name",
+                        "in": "formData",
+                        "description": "full_name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "email",
+                        "type": "string"
+                    },
+                    {
+                        "name": "fk_location_id",
+                        "in": "formData",
+                        "description": "fk_location_id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "attendance_date",
+                        "in": "formData",
+                        "description": "attendance_date",
+                        "type": "string"
+                    },
+                    {
+                        "name": "checkout_time",
+                        "in": "formData",
+                        "description": "checkout_time",
+                        "type": "string"
+                    },
+                    {
+                        "name": "checkin_time",
+                        "in": "formData",
+                        "description": "checkin_time",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/login": {
+            "post": {
+                "tags": [
+                    "Users: Everything about users"
+                ],
+                "summary": "User Normal Login",
+                "description": "User login from website",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of login in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/donationReciept": {
+            "post": {
+                "tags": [
+                    "Donation-v2: Everything about donation"
+                ],
+                "summary": "Donation Reciept",
+                "description": "Donation reciept information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of donation in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/donationreciept"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/checkEmail": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Volunteer Registration",
+                "description": "Volunteer Check In",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "Email id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/fetchAllVolunteers": {
+            "post": {
+                "tags": [
+                    "Volunteer Version 2: Everything about volunteer"
+                ],
+                "summary": "Fetch All Volunteers",
+                "description": "Volunteer Check In",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/registerDevice": {
+            "post": {
+                "tags": [
+                    "Users: Everything about users"
+                ],
+                "summary": "Registerd Device",
+                "description": "User Device Registerd 1st time",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Pass all value of Device registration in json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/deviceReg"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_2_0_0/volunteers/user/token": {
+            "post": {
+                "tags": [
+                    "Volunteers Get Token"
+                ],
+                "summary": "Generate Token",
+                "description": "Generate New Token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "grant_type",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "client_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "client_secret",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ApiResponseFormatDataset": {
+            "description": "API Response Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "dataset": {
+                            "type": "object",
+                            "format": "array"
+                        },
+                        "status": {
+                            "properties": {
+                                "action_status": {
+                                    "description": "For SUCCESS response, it is TRUE; For ERROR response, it is FALSE",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "msg": {
+                                    "description": "Success/Error Message",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        },
+                        "publish": {
+                            "properties": {
+                                "version": {
+                                    "description": "API Version",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "developer": {
+                                    "description": "API Developer",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        }
+                    }
+                }
+            ]
+        },
+        "ApiResponseFormat": {
+            "description": "API Response Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "status": {
+                            "properties": {
+                                "action_status": {
+                                    "description": "For SUCCESS response, it is TRUE; For ERROR response, it is FALSE",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "msg": {
+                                    "description": "Success/Error Message",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        },
+                        "publish": {
+                            "properties": {
+                                "version": {
+                                    "description": "API Version",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "developer": {
+                                    "description": "API Developer",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        }
+                    }
+                }
+            ]
+        },
+        "donationreciept": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "full_name": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "company": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "address": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "address2": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "city": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "state": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "zipcode": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "email_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "donation_description": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "donation_value": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "charge": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "token": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "fk_donation_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "amount": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "currency": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "email": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "description": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "inventoryList": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "location_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "addMoreInventory": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "location_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "quantity": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "current_stock": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "consumeInventory": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "location_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "quantity": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "current_stock": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "transferInventory": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "location_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "quantity": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "current_stock": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "reciever_location_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "addMoreItemList": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "location_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "addItemToLocation": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "location_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "getTransferLocation": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "eqp_location_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "addEquipmentHistory": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "status_notes": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "getEquipmentHistory": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "getRentHistory": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "equipmentCheckOut": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "inventory_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "status_notes": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "by_who": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "rent_type": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "time": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "purpose": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "eventsListJson": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "pass_key": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "type": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "page": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "page_size": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "notificationListJson": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "pass_key": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_uid": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "page": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "page_size": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "eventDetailsJson": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "pass_key": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "event_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "applyEventJson": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "pass_key": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "event_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "eclineEventJson": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "pass_key": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "event_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "globalnotificationListJson": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "device_uid": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "page": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "page_size": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "password_forget": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "useremail": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "password_verifiy_pasas": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "passcode": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "volunteer_id": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "password_reset": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "volunteer_id": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "new_pass": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "c_pass": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "login": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "login_email": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "login_pwd": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "appname": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_uid": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_token": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_name": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_model": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_version": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_os": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "push_mode": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "appversion": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "deviceReg": {
+            "description": "API Request Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "appname": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_uid": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_token": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_name": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_model": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_version": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "device_os": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "push_mode": {
+                            "type": "string",
+                            "format": "string"
+                        },
+                        "appversion": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "securityDefinitions": {
+        "oauth2": {
+            "type": "oauth2",
+            "description": "OAuth2 Implicit Grant",
+            "name": "Authorization",
+            "in": "header",
+            "flow": "accessCode",
+            "tokenUrl": "localhost/obr_version2/apis/api_1_0_0/user/token",
+            "scopes": {
+                "scope": "Description of scope."
+            }
+        }
+    }
+}

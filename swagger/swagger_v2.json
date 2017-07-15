@@ -1,0 +1,514 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "My First API",
+        "description": "My First API",
+        "version": "1.0.0"
+    },
+    "host": "localhost/",
+    "basePath": "Demo_ci/apis",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api_1_0_0/Test_user/category_list": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Category"
+                ],
+                "summary": "Categoery listing",
+                "description": "Listing of the Categoery",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_no",
+                        "in": "formData",
+                        "description": "Page No",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "formData",
+                        "description": "Page Size",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "formData",
+                        "description": "filter by categoery Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "formData",
+                        "description": "search by categoery Name",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/add_category": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Category"
+                ],
+                "summary": "Add New Categoery",
+                "description": "Add New Categoery",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category_name",
+                        "in": "formData",
+                        "description": "Category Name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/update_category": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Category"
+                ],
+                "summary": "Update Categoery",
+                "description": "Update Categoery",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "categotry_id",
+                        "in": "formData",
+                        "description": "Category id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category_name",
+                        "in": "formData",
+                        "description": "Category Name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/delete_category/3": {
+            "delete": {
+                "tags": [
+                    "Product Version 1: Everything about Category"
+                ],
+                "summary": "Delete Categoery",
+                "description": "Delete Categoery",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/sub_category": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Subcategory"
+                ],
+                "summary": "Listing of the all Subcategory",
+                "description": "Listing of the all Subcategory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/add_subcategory": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Subcategory"
+                ],
+                "summary": "Add Sub Category",
+                "description": "Add Sub category",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cat_id",
+                        "in": "formData",
+                        "description": "Category id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "subcategory",
+                        "in": "formData",
+                        "description": "Subcategory Name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/update_sub_product": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Subcategory"
+                ],
+                "summary": "Update Sub Category",
+                "description": "Update Sub category",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cat_id",
+                        "in": "formData",
+                        "description": "Category id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "subcat_id",
+                        "in": "formData",
+                        "description": "Subcategory id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "subcategory",
+                        "in": "formData",
+                        "description": "Subcategory Name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/all_product": {
+            "post": {
+                "tags": [
+                    "Product Version 1: Everything about Product"
+                ],
+                "summary": "Product listing",
+                "description": "Listing of the Product",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "oAuth2.0 Acess token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_no",
+                        "in": "formData",
+                        "description": "Page Number",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "formData",
+                        "description": "Page Size",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "formData",
+                        "description": "Filter by Price",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "formData",
+                        "description": "Search by Prdct,Subcat,Cat name",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        },
+        "/api_1_0_0/Test_user/token": {
+            "post": {
+                "tags": [
+                    "Get Token"
+                ],
+                "summary": "Generate Token",
+                "description": "Generate New Token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "grant_type",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "client_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "client_secret",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "For SUCCESS Response ACTION_STATUS is true, for ERROR response ACTION_STATUS is false",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponseFormatDataset"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ApiResponseFormatDataset": {
+            "description": "API Response Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "dataset": {
+                            "type": "object",
+                            "format": "array"
+                        },
+                        "status": {
+                            "properties": {
+                                "action_status": {
+                                    "description": "For SUCCESS response, it is TRUE; For ERROR response, it is FALSE",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "msg": {
+                                    "description": "Success/Error Message",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        },
+                        "publish": {
+                            "properties": {
+                                "version": {
+                                    "description": "API Version",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "developer": {
+                                    "description": "API Developer",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        }
+                    }
+                }
+            ]
+        },
+        "ApiResponseFormat": {
+            "description": "API Response Format",
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "status": {
+                            "properties": {
+                                "action_status": {
+                                    "description": "For SUCCESS response, it is TRUE; For ERROR response, it is FALSE",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "msg": {
+                                    "description": "Success/Error Message",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        },
+                        "publish": {
+                            "properties": {
+                                "version": {
+                                    "description": "API Version",
+                                    "type": "string",
+                                    "format": "string"
+                                },
+                                "developer": {
+                                    "description": "API Developer",
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            },
+                            "type": "object",
+                            "format": "array"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "securityDefinitions": {
+        "oauth2": {
+            "type": "oauth2",
+            "description": "OAuth2 Implicit Grant",
+            "name": "Authorization",
+            "in": "header",
+            "flow": "accessCode",
+            "tokenUrl": "http://localhost/Demo_ci/apis/api_1_0_0/Test_user/token",
+            "scopes": {
+                "scope": "Description of scope."
+            }
+        }
+    }
+}
