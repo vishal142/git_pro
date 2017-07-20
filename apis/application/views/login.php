@@ -77,7 +77,7 @@ $(document ).ready(function() {
 </script>
 
 <div id="container">
-	<h1>Login User!3</h1>
+	<h1>Login User!@ </h1>
 
 	<div id="body">
 <span style="color:red;" id="error_message"><?php echo validation_errors(); ?></span>
