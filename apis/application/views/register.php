@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		padding: 12px 10px 12px 10px;
 	}
 
-	#body {
+	#body { 
 		margin: 0 15px 0 15px;
 	}
 
