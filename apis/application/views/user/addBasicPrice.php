@@ -19,24 +19,34 @@
 
 <h1>Add Mutiple Price !</h1>
 
-<?php $attributes = array('class' => 'email', 'id' => 'myform');
+<?php $attributes = array('class' => 'email', 'id' => 'myform','onsubmit'=>'return form_validate()');
 echo form_open('user/basicPrice', $attributes); ?>
 
 
 <div class ="parent_div">
 
-<a href="javascript:void(0);" class="gray fl-right addRow"  data-structure="2">
-<span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Add item</a>
-<br>
+<a href="javascript:void(0);" class="gray fl-right addRow"  data-structure="1">
+<span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Add item</a> &nbsp;
+&nbsp;&nbsp;
+
+<!-- <a href="javascript:void(0);" id="remove_offr" class="gray fl-right revItem"  data-structure="2">
+<span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Remove item</a> -->
+
+
+<br><br>
 
  <div class ="main_c">
  <input type="hidden" name="" class = "total_div" id="loop_div" value="">
+  <div id="error_msg"></div>
 
+  <span style="color:red;"><?php echo validation_errors(); ?></span>
 
+  <input type="text" name="pr_name" id="pr_name" placeholder="Enter Pr Name "> <br><br>
+ 
  <div class="loop_div">
- <input type="text" id ="tax" name="tax[]" placeholder="Enter Tax Rate" onblur="get_total();">
- <input type="text" id = "qty" name="qty[]" placeholder="Enter qty" onblur="get_total();">
- <input type="text" id ="rate" name="rate[]" placeholder="Enter Product Rate" onblur="get_total();">
+ <input type="text" id ="tax" name="tax[]" placeholder="Enter Tax Rate" onblur="get_total();" onkeypress="return isNumberKey(event)">
+ <input type="text" id = "qty" name="qty[]" placeholder="Enter qty" onblur="get_total();" onkeypress="return isNumberKey(event)">
+ <input type="text" id ="rate" name="rate[]" placeholder="Enter Product Rate" onblur="get_total();" onkeypress="return isFloatNumberKey(event,this)">
  <input type="text" id = "basicPrice" name="basicPrice[]" placeholder="Enter basicPrice"><br>
  </div>
 
@@ -68,19 +78,47 @@ echo form_open('user/basicPrice', $attributes); ?>
 
         
         e.preventDefault();
-        var index = $(this).parents('.parent_div').find('.main_c').length*1+1; // 
-        //alert(index);
-
+        var index = $(this).parents('.parent_div').find('.main_c').length*1+1; 
         var count_div = $.trim($(".total_div").val());
 
         
 
-        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div>');
+        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');" onkeypress="return isFloatNumberKey(event,this)"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div>');
 
 
 
 
       });
+
+
+  $('.parent_div').on("click",".revItem",function(e){
+    e.preventDefault();
+
+    var index = $(this).parents('.parent_div').find('.loop_div').length*1;
+
+    //alert(index);
+    
+
+    if($(this).data("structure")==2){
+
+      if(index > 1){
+
+        $("#remove_offr").show();
+
+      }else{
+
+        $("#remove_offr").hide();
+
+        }
+
+
+    }
+
+   //$(this).parents(".parents_div").find(".loop_div").length>1 && $(this).parents(".parents_div").find(".loop_div").eq(index-1).remove();
+   $(this).parents(".parents_div").find(".loop_div").eq(1).remove();
+
+
+  });
 
  });
 
@@ -101,11 +139,41 @@ echo form_open('user/basicPrice', $attributes); ?>
   }
 
 function add_more_get_total(elm){
+  var v_error     = '1px solid #f32517';
+  var v_ok        = '1px solid #b8bab8';
+
   var count_div = elm;
 
   var tax = $("#tax_"+count_div).val();
   var qty = $("#qty_" + count_div).val();
   var rate = $("#rate_" + count_div ).val();
+
+
+   if($.trim(tax) ==''){
+   $('#error_msg').html('Please enter tax').fadeIn(3000).fadeOut(5000);
+   $('#tax_'+count_div).css('border', v_error);
+   $('#tax_'+count_div).focus();
+   return false;
+
+  }
+
+   if($.trim(qty) ==''){
+   $('#error_msg').html('Please enter Quantity').fadeIn(3000).fadeOut(5000);
+   $('#qty_'+count_div).css('border', v_error);
+   $('#qty_'+count_div).focus();
+   return false;
+
+  }
+
+
+   if($.trim(rate) ==''){
+   $('#error_msg').html('Please enter rate').fadeIn(3000).fadeOut(5000);
+   $('#rate_'+count_div).css('border', v_error);
+   $('#rate_'+count_div).focus();
+   return false;
+
+    }
+
   
   var pro_t = qty*rate;
   var basic_val = parseFloat(pro_t).toFixed(2);
@@ -119,7 +187,84 @@ function add_more_get_total(elm){
 
   
 
+function form_validate(){
 
+  var v_error     = '1px solid #f32517';
+  var v_ok        = '1px solid #b8bab8';
+
+  var pr_name = $("#pr_name").val();
+  var tax = $("#tax").val();
+  var qty = $("#qty").val();
+  var rate = $("#rate").val();
+
+
+  if($.trim(pr_name) ==''){
+   $('#error_msg').html('Please enter pr name').fadeIn(3000).fadeOut(5000);
+   $('#pr_name').css('border', v_error);
+   $('#pr_name').focus();
+   return false;
+
+  }else{
+    $('#pr_name').css('border', '');
+
+  }
+
+  if($.trim(tax) ==''){
+   $('#error_msg').html('Please enter tax').fadeIn(3000).fadeOut(5000);
+   $('#tax').css('border', v_error);
+   $('#tax').focus();
+   return false;
+
+  }else{
+      $('#tax').css('border', '');
+  }
+
+  if($.trim(qty) ==''){
+
+    $('#error_msg').html('Please enter Quantity').fadeIn(3000).fadeOut(5000);
+    $('#qty').css('border', v_error);
+    $('#qty').focus();
+    return false;
+
+
+  }else{
+    $('#qty').css('border', '');
+  }
+
+    if($.trim(rate) ==''){
+
+    $('#error_msg').html('Please enter rate').fadeIn(3000).fadeOut(5000);
+    $('#rate').css('border', v_error);
+    $('#rate').focus();
+    return false;
+
+
+  }else{
+    $('#rate').css('border', '');
+  }
+
+ }
+
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+            return true;
+    }
+
+  function isFloatNumberKey(evt,obj)
+    {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        var value = obj.value;
+        var dotcontains = value.indexOf(".") != -1;
+        if (dotcontains)
+            if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+    }
 
 
 

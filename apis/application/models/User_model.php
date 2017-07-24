@@ -143,5 +143,22 @@ return $this->db->get('tbl_products')->result_array();
 }
 
 
+function add_pr($data = array()){
+
+	$this->db->insert('tbl_pr',$data);
+	$last_id = $this->db->insert_id();
+	return $last_id;
+
+
+}
+
+ function add_pr_item($param = array()){
+ 	$this->db->insert('tbl_pr_items',$param);
+ 	return true;
+
+
+ }
+
+
 //////////////////// End Class //////////////////////
 }

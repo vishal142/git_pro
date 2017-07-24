@@ -489,11 +489,11 @@ function update_page($id){
          }
     }
 
-//print_r($data['image_not_valid']);
+    //print_r($data['image_not_valid']);
 
-$data['page_data']= $this->Common_model->select_one_row("tbl_cms",array('id'=>$id));
-$this->load->view('user/update_page',$data);
-  }
+    $data['page_data']= $this->Common_model->select_one_row("tbl_cms",array('id'=>$id));
+    $this->load->view('user/update_page',$data);
+      }
 
 
 
@@ -526,7 +526,72 @@ $this->load->view('user/update_page',$data);
      */
 
 
-  function basicPrice(){
+  function basicPrice($pr_id = NULL){
+
+    if($this->input->post()){
+      $this->form_validation->set_rules('pr_name', 'Pr Name', 'trim|required');
+      $this->form_validation->set_rules("qty[]", "Qty", "trim|required");
+      $this->form_validation->set_rules("tax[]", "Tax", "trim|required");
+      $this->form_validation->set_rules("rate[]", "Rate", "trim|required");
+      $this->form_validation->set_rules("basicPrice[]", "Basic price", "trim|required");
+
+        if ($this->form_validation->run() == FALSE)
+            {
+
+            if($pr_id > 0)
+               {
+                echo "Here";
+
+               }
+
+            }else{
+
+              $pr_name = $this->input->post('pr_name',true);
+
+              $qty = $this->input->post('qty[]',true);
+              $tax = $this->input->post('tax[]',true);
+              $rate = $this->input->post('rate[]',true);
+              $basicPrice = $this->input->post('basicPrice[]',true);
+
+              $data = array();
+
+              $pr_item = array();
+
+              $data = array(
+
+                'pr_name' => $pr_name,
+                'status' => '1'
+
+                );
+
+
+              $pr_id = $this->user_model->add_pr($data);
+
+             for($i=0;$i<count($tax);$i++){
+              $pr_item['fk_pr_id'] = $pr_id;
+              $pr_item['tax'] = $tax[$i];
+              $pr_item['qty'] = $qty[$i];
+              $pr_item['rate'] = $rate[$i];
+              $pr_item['basic_total'] = $basicPrice[$i];
+
+              $this->user_model->add_pr_item($pr_item);
+
+
+
+              
+
+             }
+
+             redirect('');
+
+
+
+
+            }
+
+
+     
+    }
 
     $this->load->view('user/addBasicPrice');
 
