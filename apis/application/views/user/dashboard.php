@@ -168,7 +168,9 @@ $img =base_url().'assets/cms/thumb/'.$row['page_name'].'.'.$row['page_image_exte
 <br>
 <br>
 <br>
-<a href="<?php echo base_url();?>User/searchProduct">Search The Product </a>
+<a href="<?php echo base_url();?>User/searchProduct">Search The Product </a><br>
+
+<a href="<?php echo base_url();?>User/basicPrice">Add Basic price </a>
 
 
 

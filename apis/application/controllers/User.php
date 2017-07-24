@@ -511,6 +511,27 @@ $this->load->view('user/update_page',$data);
 
 
   }
+    /*
+     * --------------------------------------------------------------------------
+     * @ Function Name            : basicPrice
+     * @ Added Date               : 21-7-2017
+     * @ Added By                 : Vishal Kumar Gupta
+     * -----------------------------------------------------------------
+     * @ Description              : Basic Price
+     * -----------------------------------------------------------------
+     * @ param                    :
+     * @ return                   :
+     * -----------------------------------------------------------------
+     *
+     */
+
+
+  function basicPrice(){
+
+    $this->load->view('user/addBasicPrice');
+
+
+  }
 
 
 
