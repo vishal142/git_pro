@@ -75,7 +75,7 @@ echo form_open('user/basicPrice', $attributes); ?>
 
         
 
-        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax Rate"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div>');
+        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div>');
 
 
 
@@ -101,20 +101,18 @@ echo form_open('user/basicPrice', $attributes); ?>
   }
 
 function add_more_get_total(elm){
-  alert(elm);
-  var count_div = $.trim($(".total_div").val());
+  var count_div = elm;
 
   var tax = $("#tax_"+count_div).val();
-  var qty = $("#qty").val();
-  var rate = $("#rate").val();
-  alert(tax);
-
+  var qty = $("#qty_" + count_div).val();
+  var rate = $("#rate_" + count_div ).val();
+  
   var pro_t = qty*rate;
   var basic_val = parseFloat(pro_t).toFixed(2);
   var basic_tax = parseFloat(tax).toFixed(2);
   var basic_t = parseFloat(basic_val)+ parseFloat(basic_tax);
   var basic_total = parseFloat(basic_t).toFixed(2);
-  $("#basicPrice").val(basic_total);
+  $("#basicPrice_" + count_div).val(basic_total);
   //alert(basic_total);
   
   }
