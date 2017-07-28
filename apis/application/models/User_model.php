@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
 
+	public $tbl_pr = "tbl_pr";
+
 	
 
 function all_cat(){
@@ -145,6 +147,8 @@ return $this->db->get('tbl_products')->result_array();
 
 function add_pr($data = array()){
 
+	 print_r($data);exit();
+
 	$this->db->insert('tbl_pr',$data);
 	$last_id = $this->db->insert_id();
 	return $last_id;
@@ -158,6 +162,39 @@ function add_pr($data = array()){
 
 
  }
+
+function fetch_pr($cond='',$select='*', $limit = NULL, $offset = NULL,$order = NULL){
+   
+   if($cond){
+   
+    $where = ' 1'.$cond;
+    $this->db->where($where,null,false);
+   }
+
+  $this->db->select('*');
+
+  $result = $this->db->get('tbl_pr')->result_array();
+  return $result;
+
+
+
+}
+
+function fetch_pr_products($cond='',$select='*', $limit = NULL, $offset = NULL,$order = NULL){
+
+		if($cond)
+		{
+			$where = ' 1 '.$cond;
+			$this->db->where($where, null, false);
+		}
+
+		$this->db->select($select);
+
+        $query = $this->db->get('tbl_pr_items');
+		return 	($query->result_array()); 
+
+
+}
 
 
 //////////////////// End Class //////////////////////

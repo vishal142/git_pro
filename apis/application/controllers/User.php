@@ -527,6 +527,7 @@ function update_page($id){
 
 
   function basicPrice($pr_id = NULL){
+    $data = array();
 
     if($this->input->post()){
       $this->form_validation->set_rules('pr_name', 'Pr Name', 'trim|required');
@@ -538,12 +539,6 @@ function update_page($id){
         if ($this->form_validation->run() == FALSE)
             {
 
-            if($pr_id > 0)
-               {
-                echo "Here";
-
-               }
-
             }else{
 
               $pr_name = $this->input->post('pr_name',true);
@@ -552,6 +547,7 @@ function update_page($id){
               $tax = $this->input->post('tax[]',true);
               $rate = $this->input->post('rate[]',true);
               $basicPrice = $this->input->post('basicPrice[]',true);
+              $pr_id = $this->input->post('pr_id',true);
 
               $data = array();
 
@@ -560,7 +556,8 @@ function update_page($id){
               $data = array(
 
                 'pr_name' => $pr_name,
-                'status' => '1'
+                'status' => '1',
+                'id'=> $pr_id
 
                 );
 
@@ -575,25 +572,41 @@ function update_page($id){
               $pr_item['basic_total'] = $basicPrice[$i];
 
               $this->user_model->add_pr_item($pr_item);
-
-
-
-              
-
-             }
-
-             redirect('');
-
-
-
-
             }
 
+             redirect('');
+           }
 
-     
-    }
+     }
 
-    $this->load->view('user/addBasicPrice');
+      $customer_pr_product = array();
+
+
+      if($pr_id > 0)
+       {
+
+       $cond = " AND tbl_pr.id ='".$pr_id."'";
+       $select = "";
+       $customer_pr = $this->user_model->fetch_pr($cond,$select);
+       $prod_cond = "AND fk_pr_id='".$pr_id."'";
+       $customer_pr_product = $this->user_model->fetch_pr_products($prod_cond);
+
+       if(empty($customer_pr)){
+
+         redirect('');
+
+       }
+
+
+
+       if(is_array($customer_pr) && count($customer_pr) && count($customer_pr_product) > 0){
+
+         $data['customer_pr'] = $customer_pr[0];
+         $data['customer_pr_product'] = $customer_pr_product;
+       }
+     }
+
+    $this->load->view('user/addBasicPrice',$data);
 
 
   }

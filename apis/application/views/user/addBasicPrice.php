@@ -25,6 +25,9 @@ echo form_open('user/basicPrice', $attributes); ?>
 
 <div class ="parent_div">
 
+<?php //echo '<pre>';print_r($customer_pr); ?>
+<?php //echo '<pre>';print_r($customer_pr_product); ?>
+
 <a href="javascript:void(0);" class="gray fl-right addRow"  data-structure="1">
 <span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Add item</a> &nbsp;
 &nbsp;&nbsp;
@@ -41,7 +44,24 @@ echo form_open('user/basicPrice', $attributes); ?>
 
   <span style="color:red;"><?php echo validation_errors(); ?></span>
 
-  <input type="text" name="pr_name" id="pr_name" placeholder="Enter Pr Name "> <br><br>
+  <input type="text" name="pr_name" id="pr_name" placeholder="Enter Pr Name " value="<?php echo isset($customer_pr['pr_name'])?$customer_pr['pr_name']:''?>"> <br><br>
+
+
+  <?php 
+   if(isset($customer_pr_product) && count($customer_pr_product) > 0){
+    //$customer_pr_product = array();
+
+    foreach($customer_pr_product as $key=> $row){?>
+
+  <div class="loop_div">
+   <input type="text" id ="tax_<?php echo $row['id'];?>" name="tax[]" placeholder="Enter Tax Rate" onblur="add_more_get_total(<?php echo $row['id'];?>);" onkeypress="return isNumberKey(event)" value="<?php echo isset($row['tax'])?$row['tax']:''?>">
+   <input type="text" id = "qty_<?php echo $row['id'];?>" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total(<?php echo $row['id'];?>);" onkeypress="return isNumberKey(event)" value="<?php echo isset($row['qty'])?$row['qty']:''?>">
+   <input type="text" id ="rate_<?php echo $row['id'];?>" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total(<?php echo $row['id'];?>);" onkeypress="return isFloatNumberKey(event,this)" value="<?php echo isset($row['rate'])?$row['rate']:''?>">
+   <input type="text" id = "basicPrice_<?php echo $row['id'];?>" name="basicPrice[]" placeholder="Enter basicPrice" value="<?php echo isset($row['basic_total'])?$row['basic_total']:''?>"><br>
+  </div>
+
+  <?php }
+  }else{ ?>
  
  <div class="loop_div">
  <input type="text" id ="tax" name="tax[]" placeholder="Enter Tax Rate" onblur="get_total();" onkeypress="return isNumberKey(event)">
@@ -50,11 +70,15 @@ echo form_open('user/basicPrice', $attributes); ?>
  <input type="text" id = "basicPrice" name="basicPrice[]" placeholder="Enter basicPrice"><br>
  </div>
 
+  <?php } ?>
+
   
 
  </div>
 
   <br>
+
+  <input type="hidden" name="pr_id" value="<?php echo isset($customer_pr['pr_name'])?$customer_pr['id']:''?>">
 
    <input type="submit" name ="submit" value="Submit">
  <?php echo form_close(); ?>
