@@ -147,10 +147,21 @@ return $this->db->get('tbl_products')->result_array();
 
 function add_pr($data = array()){
 
-	 print_r($data);exit();
+	 //print_r($data);exit();
+	 if($data['id']!=''){
 
+    $this->db->where('id',$data['id']);
+	$this->db->update('tbl_pr',$data);
+	$last_id = $data['id'];	
+
+
+	 }else{
 	$this->db->insert('tbl_pr',$data);
 	$last_id = $this->db->insert_id();
+
+	 }
+
+
 	return $last_id;
 
 
@@ -192,6 +203,24 @@ function fetch_pr_products($cond='',$select='*', $limit = NULL, $offset = NULL,$
 
         $query = $this->db->get('tbl_pr_items');
 		return 	($query->result_array()); 
+
+
+}
+
+function chk_pr_item($pr_id){
+
+ $this->db->select('*');
+ $this->db->where('fk_pr_id',$pr_id);
+ return $this->db->get('tbl_pr_items')->num_rows();
+
+
+}
+
+function del_old_pr_item($id){
+
+	$this->db->where('fk_pr_id',$id);
+	$this->db->delete('tbl_pr_items');
+	return true;
 
 
 }

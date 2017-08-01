@@ -564,6 +564,13 @@ function update_page($id){
 
               $pr_id = $this->user_model->add_pr($data);
 
+              $chk_old_pr_item = $this->user_model->chk_pr_item($pr_id);
+              
+              if($chk_old_pr_item > 0) {
+              $del_old_pr_item = $this->user_model->del_old_pr_item($pr_id);
+
+               }
+
              for($i=0;$i<count($tax);$i++){
               $pr_item['fk_pr_id'] = $pr_id;
               $pr_item['tax'] = $tax[$i];

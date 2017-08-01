@@ -32,8 +32,8 @@ echo form_open('user/basicPrice', $attributes); ?>
 <span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Add item</a> &nbsp;
 &nbsp;&nbsp;
 
-<!-- <a href="javascript:void(0);" id="remove_offr" class="gray fl-right revItem"  data-structure="2">
-<span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Remove item</a> -->
+<a href="javascript:void(0);" id="remove_offr" class="gray fl-right revItem"  data-structure="2">
+<span class="plus-icon"><i class="fa fa-plus-circle"></i></span>Remove item</a>
 
 
 <br><br>
@@ -105,9 +105,8 @@ echo form_open('user/basicPrice', $attributes); ?>
         var index = $(this).parents('.parent_div').find('.main_c').length*1+1; 
         var count_div = $.trim($(".total_div").val());
 
-        
-
-        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');" onkeypress="return isFloatNumberKey(event,this)"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div>');
+       
+        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><div id ="remove_'+count_div+'"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');" onkeypress="return isFloatNumberKey(event,this)"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div></div>');
 
 
 
@@ -118,7 +117,8 @@ echo form_open('user/basicPrice', $attributes); ?>
   $('.parent_div').on("click",".revItem",function(e){
     e.preventDefault();
 
-    var index = $(this).parents('.parent_div').find('.loop_div').length*1;
+    //var index = $(this).parents('.parent_div').find('.loop_div').length*1;
+    var index = $.trim($(".total_div").val());
 
     //alert(index);
     
@@ -139,8 +139,11 @@ echo form_open('user/basicPrice', $attributes); ?>
     }
 
    //$(this).parents(".parents_div").find(".loop_div").length>1 && $(this).parents(".parents_div").find(".loop_div").eq(index-1).remove();
-   $(this).parents(".parents_div").find(".loop_div").eq(1).remove();
-
+   //$(this).parents(".main_c").find(".loop_div").eq(index-1).remove();
+   alert(index);
+   $("#remove_"+index).remove();
+   $(this).parents(".loop_div").addClass("remove_"+index);
+  
 
   });
 
@@ -165,6 +168,7 @@ echo form_open('user/basicPrice', $attributes); ?>
 function add_more_get_total(elm){
   var v_error     = '1px solid #f32517';
   var v_ok        = '1px solid #b8bab8';
+
 
   var count_div = elm;
 
@@ -211,63 +215,7 @@ function add_more_get_total(elm){
 
   
 
-function form_validate(){
 
-  var v_error     = '1px solid #f32517';
-  var v_ok        = '1px solid #b8bab8';
-
-  var pr_name = $("#pr_name").val();
-  var tax = $("#tax").val();
-  var qty = $("#qty").val();
-  var rate = $("#rate").val();
-
-
-  if($.trim(pr_name) ==''){
-   $('#error_msg').html('Please enter pr name').fadeIn(3000).fadeOut(5000);
-   $('#pr_name').css('border', v_error);
-   $('#pr_name').focus();
-   return false;
-
-  }else{
-    $('#pr_name').css('border', '');
-
-  }
-
-  if($.trim(tax) ==''){
-   $('#error_msg').html('Please enter tax').fadeIn(3000).fadeOut(5000);
-   $('#tax').css('border', v_error);
-   $('#tax').focus();
-   return false;
-
-  }else{
-      $('#tax').css('border', '');
-  }
-
-  if($.trim(qty) ==''){
-
-    $('#error_msg').html('Please enter Quantity').fadeIn(3000).fadeOut(5000);
-    $('#qty').css('border', v_error);
-    $('#qty').focus();
-    return false;
-
-
-  }else{
-    $('#qty').css('border', '');
-  }
-
-    if($.trim(rate) ==''){
-
-    $('#error_msg').html('Please enter rate').fadeIn(3000).fadeOut(5000);
-    $('#rate').css('border', v_error);
-    $('#rate').focus();
-    return false;
-
-
-  }else{
-    $('#rate').css('border', '');
-  }
-
- }
 
     function isNumberKey(evt)
     {
