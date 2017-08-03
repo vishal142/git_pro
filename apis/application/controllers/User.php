@@ -641,8 +641,8 @@ function update_page($id){
         $data['email']= $this->input->post('email');
         $data['address']= $this->input->post('address');
         $data['id'] = $this->input->post('supplier_id');
-        $this->user_model->add_supplier($data);
-        redirect('');
+        $last_id = $this->user_model->add_supplier($data);
+        redirect('user/addSupplier/'.$last_id);
 
       }
 
