@@ -5,13 +5,9 @@
 
 <script src="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+</script>
 <body>
 
-<script>
-$(document).ready(function() {
-    $('table.display').DataTable();
-</script>
 
 <div>
 
@@ -169,6 +165,8 @@ $img =base_url().'assets/cms/thumb/'.$row['page_name'].'.'.$row['page_image_exte
 <br>
 <br>
 <a href="<?php echo base_url();?>User/searchProduct">Search The Product </a><br>
+
+<a href="<?php echo base_url();?>User/addSupplier">Add Suplier </a><br>
 
 <a href="<?php echo base_url();?>User/basicPrice">Add Basic price </a>
 

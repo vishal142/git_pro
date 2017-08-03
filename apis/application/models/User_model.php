@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User_model extends CI_Model {
 
 	public $tbl_pr = "tbl_pr";
+	public $tbl_supplier = "tbl_supplier";
 
 	
 
@@ -223,6 +224,33 @@ function del_old_pr_item($id){
 	return true;
 
 
+}
+
+ function sup_detail($id){
+
+ 	$this->db->select('*');
+ 	$this->db->where($this->tbl_supplier.'.id',$id);
+ 	$this->db->from($this->tbl_supplier);
+ 	$dtl = $this->db->get()->row_array();
+ 	return $dtl;
+
+
+ }
+
+function add_supplier($param = array()){
+	if($param['id'] !=''){
+
+	 $this->db->where($this->tbl_supplier.'.id',$param['id']);
+	 $this->db->update($this->tbl_supplier,$param);
+	$last = $param['id'];
+
+	}else{
+    $this->db->insert($this->tbl_supplier,$param);
+	$last = $this->db->insert_id();
+
+	}
+	
+	return $last;
 }
 
 

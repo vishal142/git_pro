@@ -106,7 +106,7 @@ echo form_open('user/basicPrice', $attributes); ?>
         var count_div = $.trim($(".total_div").val());
 
        
-        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div"><div id ="remove_'+count_div+'"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');" onkeypress="return isFloatNumberKey(event,this)"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div></div>');
+        $(this).parents('.parent_div').find('.main_c').append('<div class ="loop_div_'+count_div+'"><div id ="remove_'+count_div+'"><input type="text" id="tax_'+count_div+'" name="tax[]" placeholder="Enter Tax" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="qty_'+count_div+'" name="qty[]" placeholder="Enter qty" onblur="add_more_get_total('+count_div+');" onkeypress="return isNumberKey(event)"><input type="text" id="rate_'+count_div+'" name="rate[]" placeholder="Enter Product Rate" onblur="add_more_get_total('+count_div+');" onkeypress="return isFloatNumberKey(event,this)"><input type="text" id = "basicPrice_'+count_div+'" name="basicPrice[]" placeholder="Enter basicPrice"><br></div></div>');
 
 
 

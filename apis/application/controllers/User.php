@@ -619,6 +619,56 @@ function update_page($id){
   }
 
 
+  public function addSupplier($sp_id = NULL){
+    $data = array();
+
+    if($this->input->post()){
+
+      //print_r($this->input->post()); exit();
+      $this->form_validation->set_rules('name','Name','trim|required');
+      $this->form_validation->set_rules('phone','Phone','trim|required');
+      $this->form_validation->set_rules('email','Email','trim|required');
+      $this->form_validation->set_rules('name','Name','trim|required');
+      if($this->form_validation->run() == FALSE){
+
+
+          $this->load->view('user/addSupplier',$data);
+
+      }else{
+
+        $data['name']= $this->input->post('name');
+        $data['phone']= $this->input->post('phone');
+        $data['email']= $this->input->post('email');
+        $data['address']= $this->input->post('address');
+        $data['id'] = $this->input->post('supplier_id');
+        $this->user_model->add_supplier($data);
+        redirect('');
+
+      }
+
+
+    }else{
+
+      if($sp_id > 0){
+
+        $data['sup_detail'] = $this->user_model->sup_detail($sp_id);
+        if(empty($data['sup_detail'])){
+
+          redirect('');
+
+        }
+
+      }
+
+     $this->load->view('user/addSupplier',$data);
+
+    }
+
+    
+
+
+  }
+
 
 
 
