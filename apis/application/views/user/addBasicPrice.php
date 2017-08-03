@@ -213,6 +213,47 @@ function add_more_get_total(elm){
   
   }
 
+  function form_validate(){
+  var v_error     = '1px solid #f32517';
+  var v_ok        = '1px solid #b8bab8';
+  var pr_name = $("#pr_name").val();
+  var tax = $("#tax").val();
+  var qty = $("#qty").val();
+  var rate = $("#rate").val();
+  if($.trim(pr_name) ==''){
+   $('#error_msg').html('Please enter pr name').fadeIn(3000).fadeOut(5000);
+   $('#pr_name').css('border', v_error);
+   $('#pr_name').focus();
+   return false;
+  }else{
+    $('#pr_name').css('border', '');
+  }
+  if($.trim(tax) ==''){
+   $('#error_msg').html('Please enter tax').fadeIn(3000).fadeOut(5000);
+   $('#tax').css('border', v_error);
+   $('#tax').focus();
+   return false;
+  }else{
+      $('#tax').css('border', '');
+  }
+  if($.trim(qty) ==''){
+    $('#error_msg').html('Please enter Quantity').fadeIn(3000).fadeOut(5000);
+    $('#qty').css('border', v_error);
+    $('#qty').focus();
+    return false;
+  }else{
+    $('#qty').css('border', '');
+  }
+    if($.trim(rate) ==''){
+    $('#error_msg').html('Please enter rate').fadeIn(3000).fadeOut(5000);
+    $('#rate').css('border', v_error);
+    $('#rate').focus();
+    return false;
+  }else{
+    $('#rate').css('border', '');
+  }
+ }
+
   
 
 
