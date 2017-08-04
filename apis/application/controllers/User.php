@@ -506,7 +506,7 @@ function update_page($id){
    //echo $this->db->last_query();
    $data['all_cat']     = $this->user_model->all_cat();
    $data['all_sub_cat'] = $this->user_model->all_sub_cat();
-   print_r($data['subcat_id']);
+   //print_r($data['subcat_id']);
    $this->load->view('user/search_product', $data);
 
 
@@ -529,6 +529,8 @@ function update_page($id){
   function basicPrice($pr_id = NULL){
     $data = array();
 
+    $data['all_suplier'] = $this->user_model->all_suplier();
+    
     if($this->input->post()){
       $this->form_validation->set_rules('pr_name', 'Pr Name', 'trim|required');
       $this->form_validation->set_rules("qty[]", "Qty", "trim|required");
@@ -547,6 +549,7 @@ function update_page($id){
               $tax = $this->input->post('tax[]',true);
               $rate = $this->input->post('rate[]',true);
               $basicPrice = $this->input->post('basicPrice[]',true);
+              $supplier_id = $this->input->post('supplier_id',true);
               $pr_id = $this->input->post('pr_id',true);
 
               $data = array();
@@ -556,6 +559,7 @@ function update_page($id){
               $data = array(
 
                 'pr_name' => $pr_name,
+                'suppler_id'=> $supplier_id,
                 'status' => '1',
                 'id'=> $pr_id
 
@@ -621,6 +625,7 @@ function update_page($id){
 
   public function addSupplier($sp_id = NULL){
     $data = array();
+    //echo $sp_id; exit();
 
     if($this->input->post()){
 
@@ -636,12 +641,26 @@ function update_page($id){
 
       }else{
 
+        $supl_id = $this->input->post('supplier_id');
+
         $data['name']= $this->input->post('name');
         $data['phone']= $this->input->post('phone');
         $data['email']= $this->input->post('email');
         $data['address']= $this->input->post('address');
         $data['id'] = $this->input->post('supplier_id');
         $last_id = $this->user_model->add_supplier($data);
+
+
+        if($supl_id > 0){
+
+          $this->session->set_flashdata('message', "Update successfully");
+
+        }else{
+
+          $this->session->set_flashdata('message', "Insert successfully");
+
+        }
+
         redirect('user/addSupplier/'.$last_id);
 
       }
@@ -666,6 +685,15 @@ function update_page($id){
 
     
 
+
+  }
+
+
+  function get_suplier_detail(){
+
+   $sup_id = $this->input->post('sup_id');
+   $sup_detail = $this->user_model->sup_detail($sup_id);
+   echo json_encode($sup_detail);
 
   }
 

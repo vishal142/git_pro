@@ -254,5 +254,15 @@ function add_supplier($param = array()){
 }
 
 
+	function all_suplier(){
+    
+    $this->db->select('*');
+    $this->db->where('status','1');
+    $res = $this->db->get($this->tbl_supplier);
+    return $res->result_array();
+
+	}
+
+
 //////////////////// End Class //////////////////////
 }

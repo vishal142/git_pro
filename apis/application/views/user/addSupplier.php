@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Add Suplier</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,7 +19,9 @@
   <h2><?php echo isset($sup_detail['id'])?'Update Suplier':'Add Supplier';?>
    </h2>
 
-  <span style="color:red;"><?php echo validation_errors(); ?></span>
+  <span style="color:red;" id="error"><?php echo validation_errors(); ?></span>
+
+  <span style="color:green;" id="sucess"><?php echo $this->session->flashdata('message');?></span>
   <form action="<?php echo base_url();?>User/addSupplier" method="post" onSubmit ="return form_submit()">
 
   <div class="form-group">
@@ -54,6 +56,11 @@
 </div>
 
 <script>
+ $(document).ready(function(){
+  $("#sucess").fadeOut(5000);
+   
+});
+
   
   function form_submit(){
    
