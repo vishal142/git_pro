@@ -9,7 +9,7 @@ class Home extends CI_Controller {
         $this->load->model('Home_model');
         $this->load->model('Common_model');
      $this->load->helper('Common_helper');
-        check_user_authentication();
+        check_user_authentication(); 
         }
 
 
