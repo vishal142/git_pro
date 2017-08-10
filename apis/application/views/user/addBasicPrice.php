@@ -182,9 +182,17 @@ echo form_open('user/basicPrice', $attributes); ?>
     var post_url = '<?php echo base_url();?>user/get_suplier_detail';
     var data = {sup_id:sup_id};
     $.post(post_url,data,function(responce){
-
+     
+     if(responce==null){
+       $("#sp_phone").val('');
+       $("#sp_email").val('');
+       $('#Supplier_id').css('border', '1px solid red');
+    }else{
+     
      $("#sp_phone").val(responce.phone);
      $("#sp_email").val(responce.email);
+     $('#Supplier_id').css('border', '1px solid green');
+    }
 
 
     },'json');
@@ -209,7 +217,7 @@ echo form_open('user/basicPrice', $attributes); ?>
 
 function add_more_get_total(elm){
   var v_error     = '1px solid #f32517';
-  var v_ok        = '1px solid #b8bab8';
+  var v_ok        = '1px solid green';
 
 
   var count_div = elm;
@@ -260,18 +268,29 @@ function add_more_get_total(elm){
   function form_validate(){
 
   var v_error     = '1px solid #f32517';
-  var v_ok        = '1px solid #b8bab8';
+  var v_ok        = '1px solid green';
   var pr_name = $("#pr_name").val();
   var tax = $("#tax").val();
   var qty = $("#qty").val();
   var rate = $("#rate").val();
+  var sp_phone = $("#sp_phone").val();
+  var sp_email = $("#sp_email").val();
+  var sp_id = $('#Supplier_id').val();
+  
+    if($.trim(sp_id) == ''){
+    $('#error_msg').html('Please select supplier').fadeIn(3000).fadeOut(5000);
+    $('#Supplier_id').css('border', v_error);
+    $('#Supplier_id').focus();
+    return false;
+  }
+
   if($.trim(pr_name) ==''){
    $('#error_msg').html('Please enter pr name').fadeIn(3000).fadeOut(5000);
    $('#pr_name').css('border', v_error);
    $('#pr_name').focus();
    return false;
   }else{
-    $('#pr_name').css('border', '');
+    $('#pr_name').css('border','1px solid green');
   }
   if($.trim(tax) ==''){
    $('#error_msg').html('Please enter tax').fadeIn(3000).fadeOut(5000);
@@ -279,7 +298,7 @@ function add_more_get_total(elm){
    $('#tax').focus();
    return false;
   }else{
-      $('#tax').css('border', '');
+      $('#tax').css('border', v_ok);
   }
   if($.trim(qty) ==''){
     $('#error_msg').html('Please enter Quantity').fadeIn(3000).fadeOut(5000);
@@ -287,7 +306,7 @@ function add_more_get_total(elm){
     $('#qty').focus();
     return false;
   }else{
-    $('#qty').css('border', '');
+    $('#qty').css('border', v_ok);
   }
     if($.trim(rate) ==''){
     $('#error_msg').html('Please enter rate').fadeIn(3000).fadeOut(5000);
@@ -295,8 +314,12 @@ function add_more_get_total(elm){
     $('#rate').focus();
     return false;
   }else{
-    $('#rate').css('border', '');
+    $('#rate').css('border', v_ok);
   }
+
+
+
+
  }
 
 function isNumberKey(evt)
